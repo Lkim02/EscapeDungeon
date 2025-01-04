@@ -11,59 +11,17 @@ A simple game interaction interface based on the programmable pipeline OpenGL AP
 - Physics effects simulation and collision detection: PhysX library
   - Use of static and dynamic rigid bodies, with the player as a kinematic rigid body
 
-! [demo](. /figs/demo.png)
 
 
-
-### Introduction to the architecture
-
-#### Directory structure
-
-``
-||demo : project resources
-|--- assets : project resources
-| |--- audios : audio
-| |--- audios : audio
-| |--- objects: models
-| `--- shaders: shader code
-||--- objects: models | `--- shaders: shader code
-||--- src : main project code
-||--- src : main project code
-| |--- animation : Animator class for animation playback, Animation class for animation data structure storage.
-| |--- application: Application singleton class, it is the application window abstraction.
-| |--- camera : Camera class, camera
-| |--- light : Light class, not yet available
-| |--- model : Model class imports and stores the full model, Mesh class stores each mesh data structure, Bone class stores the bone data structure.
-||--- physics : CollosionCB class, custom PhysX library scene collision callback function class.
-||--- shader : Shader class, used to build and use shader compilation.
-||--- world : World class represents the world, Object class is an abstraction of all objects in the world, Player is a special Object.
-| Player is a special Object.
-| |- assimp2glm.h : ASSIMP and GLM library maths structure conversion
-| |- common.h : base header file, references common third-party libraries and standard libraries, common global definition, referenced by all class files.
-| `- utils.h/.cpp : utility functions
-|--- utils.h/.cpp : utility functions
-||--- thirdparty : third-party libraries built and referenced for Win10.
-| --- --- thirdparty : third-party libraries built and referenced for win10
-| `--- dll : Dynamic Link Libraries
-| `--- include: header files
-| `--- lib : static libraries
-| - - - main.cpp : static library
-|- main.cpp : main logic of the programme
-|- main_derecated.cpp : old test logic, basically not used any more
-`- CMakeLists.txt : Project management in Visual Studio 2022 via CMake.
-``- CMakeLists.txt : The project is managed in Visual Studio 2022 via CMake.
 
 #### Project Architecture
 
 The basic design refers to LearnOpenGL, based on which it is further structured to facilitate custom import and placement of the specified model, as well as to follow the OOP programming principles; the structural relationship of the project's main classes is shown in the following figure
-
-! [classed](. /figs/classes.png)  
+ 
 
 The main logic of the programme is implemented in main.cpp, from here you can start to sort out the project code structure, there are basic comments in the code, if you can't understand it, then come back to ask. The basic flow of the project runtime is shown in the following figure
 
-! [struct](. /figs/structure.png)
 
-Translated with DeepL.com (free version)
 
 #### Usage
 
@@ -97,7 +55,6 @@ The basic operation mode when the programme is running
    - The model of the ground is also built by myself with Blender, i.e. flat + texture mapping, which is rather crude; it seems to be difficult to find a scene model with reasonable skeleton and animation.
 3. the ground in PhysX can't be used as a Plane, because without thickness RigidDynamic would pass right through it, so it was given thickness in the physics simulation
 
-Translated with DeepL.com (free version)
 4. The Player's corresponding dynamic rigid body is set with a ‘kinematic rigid body’ `setRigidBodyFlag(physx::PxRigidBodyFlag::eKINEMATIC, true)`, controlled only by user input, and the expected position is passed in prior to each frame of the simulation using `rigid_dynamic->setKinematicTarget(transform_to_test)`. rigid_dynamic->setKinematicTarget(transform_to_test)` to pass in the expected position, which is subsequently determined when `mScene->simulate(...) ` when determining; the physical model of the character is simulated using a simple wraparound box
    - It is suspected that the `px_triangle_mesh` built from the model doesn't work well, so the Player's physical shape in PhysX is statically configured to be a simple AABB box, with `_aabb_hy` as its half-height.
 5. Collision detection between kinematic and static rigid bodies RigidStatic in PhysX is not yet successful: it is not yet known how to trigger the callback function correctly; **Collisions between kinematic and dynamic rigid bodies can be validated**, see collision between the character and the barrels in the behaviour of the runtime application
