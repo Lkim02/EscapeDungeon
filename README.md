@@ -6,9 +6,7 @@ A simple game interaction interface implemented using the OpenGL programmable pi
 
 - **Camera Configuration and Movement**: Currently set to FOLLOW mode, with the ability to toggle modes via key presses.
 
-- Model Import and Display
-
-  : Includes support for skeletal models and animations, using the ASSIMP library.
+- Model Import and Display: Includes support for skeletal models and animations, using the ASSIMP library.
 
   - Static models can be imported in formats like `.obj`, while dynamic models can use formats such as `.dae` and `.fbx`.
   - Vertex shaders support animation playback.
