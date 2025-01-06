@@ -26,7 +26,7 @@ public:
 		//if (px_triangle_mesh) { px_triangle_mesh->release(); std::cout << "Cleared px_triangle_mesh" << std::endl; }
 	}
 
-	void render(glm::vec3& view, glm::vec3& projection); // TODO: whether render here or out
+	void render(glm::mat4& view, glm::mat4& projection); // TODO: whether render here or out
 	void draw(std::shared_ptr<Shader>& shader);
 	void start();
 	virtual void update(float _delta_time);

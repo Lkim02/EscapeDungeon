@@ -51,6 +51,7 @@ private:
 	/*=== Object ===*/
 	std::shared_ptr<Player> _player = nullptr;
 	std::vector<std::shared_ptr<Object>> _objects;
+	std::shared_ptr<Object> _signature = nullptr;
 
 	/*=== Camera ===*/
 	Camera _camera;

@@ -70,10 +70,16 @@ void Object::update(float _delta_time) {
 	animator->update(_delta_time);
 }
 
-void Object::render(glm::vec3& view, glm::vec3& projection) { // DO NOT USE
+void Object::render(glm::mat4& view, glm::mat4& projection) { // DO NOT USE: only for signature
 	_shader->begin();
 
-	// TODO: whether to render here or out in the world
+	_shader->setMat4f("view", glm::value_ptr(view));
+	_shader->setMat4f("projection", glm::value_ptr(projection));
+	_shader->setMat4f("model", glm::value_ptr(_model_matrix));
+	const std::vector<glm::mat4>& bone_transforms = animator->getFinalBoneMatrices();
+	for (int i = 0; i < bone_transforms.size(); ++i) {
+		_shader->setMat4f("finalBonesMatrices[" + std::to_string(i) + "]", glm::value_ptr(bone_transforms[i]));
+	}
 	_model->draw(_shader.get());
 
 	_shader->end();

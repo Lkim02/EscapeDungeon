@@ -47,6 +47,16 @@ public:
 
 		std::cout.rdbuf(cout_buf); // recover
 	}
+	void printTextureLoaded() {
+		std::cout << "mesh size" << _meshes.size() << std::endl;
+		std::cout << _directory << " loaded texture:" << std::endl;
+		for (auto& texture : _textures_loaded) {
+			std::cout << "\t" << texture.path << std::endl;
+		}
+	}
+	// Illegal method: reluctantly for mixing texture
+	//		I've tried all the format, and NONE would contain the right two mixed texture from Blender 
+	void loadMaterialTextureByHand(std::string file_name);  
 
 private:
 	std::vector<Mesh> _meshes;

@@ -165,6 +165,18 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType 
 	return textures;
 }
 
+// only for signature-tomix
+void Model::loadMaterialTextureByHand(std::string file_name) {
+	Texture texture;
+	texture.id = textureFromFile(file_name.c_str(), _directory);
+	texture.type = "texture_diffuse";
+	texture.path = file_name.c_str();
+	_textures_loaded.push_back(texture);
+
+	// assume _meshes.size() == 1
+	_meshes[0].textures.push_back(texture);
+}
+
 
 
 /* Physics */
