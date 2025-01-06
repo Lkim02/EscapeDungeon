@@ -14,9 +14,7 @@ A simple game interaction interface implemented using the OpenGL programmable pi
 
 - **Background Music and Sound Effects**: Managed via the IrrKlang library.
 
-- Physics Simulation and Collision Detection
-
-  : Utilized through the PhysX library.
+- Physics Simulation and Collision Detection: Utilized through the PhysX library.
 
   - Includes static and dynamic rigid bodies, with the player defined as a kinematic rigid body.
   - ![demo](./figs/demo.png)
