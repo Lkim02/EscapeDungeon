@@ -47,7 +47,7 @@ void Camera::switchMode(std::shared_ptr<Object> obj) {
 // TODO: can be clearer, seperate input semantics with movement semantics
 void Camera::processKeyboard(float delta_t) {
 	if (_status == CAMERA_FOLLOW) {
-		assert(obj != nullptr);
+		assert(_followed_object != nullptr);
 		position = _followed_object->getPosition() + _followed_offset;
 		return ;
 	} 
