@@ -1,0 +1,26 @@
+# Blender 4.3.2 MTL File: 'barrels_packed.blend'
+# www.blender.org
+
+newmtl tnt
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd barrel_diffuse.jpg
+map_Ns barrel_roughness.jpg
+map_refl barrel_metallic.jpg
+map_Bump -bm 1.000000 barrel_normal.png
+
+newmtl wine
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd barrel_diffuse.jpg
+map_Ns barrel_roughness.jpg
+map_refl barrel_metallic.jpg
+map_Bump -bm 1.000000 barrel_normal.png
