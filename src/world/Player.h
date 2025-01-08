@@ -36,7 +36,7 @@ public:
 	void processMouseScroll(float yoffset) override;
 
 	/* Physics */
-	physx::PxRigidDynamic* Player::createRigidDynamic(physx::PxPhysics* physics, physx::PxCookingParams& cookingParams, physx::PxMaterial* material) override;
+	physx::PxRigidDynamic* createRigidDynamic(physx::PxPhysics* physics, physx::PxCookingParams& cookingParams, physx::PxMaterial* material) override;
 	void updateSimulateResult() override;
 
 	/* Camera Mode */
